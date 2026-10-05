@@ -1,0 +1,24 @@
+.container {
+  width: min(100% - 2 * var(--gutter), var(--container-width));
+  margin-inline: auto;
+}
+
+.dashboard {
+  display: grid;
+  gap: 2rem;
+  margin-block: 2rem 3rem;
+}
+
+.dashboard-main {
+  display: grid;
+  gap: 2rem;
+  align-content: start;
+  min-width: 0;
+}
+
+@media (min-width: 75em) {
+  .dashboard {
+    grid-template-columns: minmax(0, 1fr) 24rem;
+    margin-block: 3rem 5rem;
+  }
+}

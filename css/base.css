@@ -1,0 +1,45 @@
+body {
+  background-color: var(--neutral-900);
+  color: var(--neutral-0);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+:focus-visible {
+  outline: 2px solid var(--neutral-0);
+  outline-offset: 3px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--blue-500);
+  color: var(--neutral-0);
+  translate: 0 -200%;
+  transition: translate var(--transition);
+}
+
+.skip-link:focus-visible {
+  translate: 0 0;
+}
+
+.section-title {
+  margin-bottom: 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
