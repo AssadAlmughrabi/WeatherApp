@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Search any place to see current weather, an hourly forecast and a 7-day forecast.">
+  <title>Weather Now</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="preload" href="assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/fonts/DM_Sans/DMSans-Italic-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components/button.css">
+  <link rel="stylesheet" href="css/components/menu.css">
+  <link rel="stylesheet" href="css/components/header.css">
+  <link rel="stylesheet" href="css/components/hero.css">
+  <link rel="stylesheet" href="css/components/search.css">
+  <link rel="stylesheet" href="css/components/current.css">
+  <link rel="stylesheet" href="css/components/metrics.css">
+  <link rel="stylesheet" href="css/components/daily.css">
+  <link rel="stylesheet" href="css/components/hourly.css">
+  <link rel="stylesheet" href="css/components/states.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header container">
+    <a class="site-header-logo" href="./">
+      <img src="assets/images/logo.svg" alt="Weather Now" width="197" height="40">
+    </a>
+    <div class="dropdown">
+      <button class="button button-secondary units-trigger" type="button" aria-expanded="false" aria-controls="units-menu" data-units-trigger>
+        <img src="assets/images/icon-units.svg" alt="" width="16" height="16">
+        <span>Units</span>
+        <img class="dropdown-chevron" src="assets/images/icon-dropdown.svg" alt="" width="13" height="8">
+      </button>
+      <div class="menu menu-units" id="units-menu" hidden data-units-menu></div>
+    </div>
+  </header>
+
+  <main class="container" id="main">
+    <section class="hero" aria-labelledby="hero-title" data-hero>
+      <h1 class="hero-title" id="hero-title">How’s the sky looking today?</h1>
+      <form class="search" role="search" data-search>
+        <div class="search-field">
+          <label class="visually-hidden" for="search-input">Search for a place</label>
+          <img class="search-icon" src="assets/images/icon-search.svg" alt="" width="20" height="20">
+          <input class="search-input" id="search-input" name="query" type="search" placeholder="Search for a place..." autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="search-suggestions" data-search-input>
+          <ul class="suggestions" id="search-suggestions" role="listbox" aria-label="Suggested places" hidden data-search-suggestions></ul>
+        </div>
+        <button class="button button-primary" type="submit">Search</button>
+      </form>
+    </section>
+    
+    <div class="empty-state" role="status" hidden data-empty>
+      <img class="empty-state-icon" src="assets/images/icon-error.svg" alt="" width="42" height="42">
+      <p class="empty-state-message">No search result found!</p>
+    </div>
+
+    <section class="error-state" aria-labelledby="error-title" hidden data-error>
+      <img class="error-state-icon" src="assets/images/icon-error.svg" alt="" width="42" height="42">
+      <h2 class="error-state-title" id="error-title">Something went wrong</h2>
+      <p class="error-state-message">We couldn’t connect to the server (API error). Please try again in a few moments.</p>
+      <button class="button button-secondary" type="button" data-retry>
+        <img src="assets/images/icon-retry.svg" alt="" width="16" height="17">
+        <span>Retry</span>
+      </button>
+    </section>
+
+    <div class="dashboard" data-dashboard>
+      <div class="dashboard-main">
+        <section class="current" aria-labelledby="current-title" aria-live="polite" aria-busy="true" data-current>
+          <h2 class="visually-hidden" id="current-title">Current weather</h2>
+          <div class="current-place placeholder">
+            <h3 class="current-location">–</h3>
+            <p class="current-date"><time>–</time></p>
+          </div>
+          <div class="current-reading placeholder">
+            <span class="current-icon"></span>
+            <p class="current-temperature">–</p>
+          </div>
+          <div class="current-loading">
+            <img class="current-spinner" src="assets/images/icon-loading.svg" alt="Loading" width="32" height="32">
+          </div>
+        </section>
+
+        <section aria-label="Current conditions">
+          <dl class="metrics" data-metrics>
+            <div class="metric"><dt class="metric-label">Feels Like</dt><dd class="metric-value">—</dd></div>
+            <div class="metric"><dt class="metric-label">Humidity</dt><dd class="metric-value">—</dd></div>
+            <div class="metric"><dt class="metric-label">Wind</dt><dd class="metric-value">—</dd></div>
+            <div class="metric"><dt class="metric-label">Precipitation</dt><dd class="metric-value">—</dd></div>
+          </dl>
+        </section>
+
+        <section aria-labelledby="daily-title">
+          <h2 class="section-title" id="daily-title">Daily forecast</h2>
+          <ul class="daily" role="list" aria-busy="true" data-daily>
+            <li class="day-card skeleton" aria-hidden="true"><p class="day-card-name">–</p><span class="day-card-icon"></span><p class="day-card-temperatures">–</p></li>
+            <li class="day-card skeleton" aria-hidden="true"><p class="day-card-name">–</p><span class="day-card-icon"></span><p class="day-card-temperatures">–</p></li>
+            <li class="day-card skeleton" aria-hidden="true"><p class="day-card-name">–</p><span class="day-card-icon"></span><p class="day-card-temperatures">–</p></li>
+            <li class="day-card skeleton" aria-hidden="true"><p class="day-card-name">–</p><span class="day-card-icon"></span><p class="day-card-temperatures">–</p></li>
+            <li class="day-card skeleton" aria-hidden="true"><p class="day-card-name">–</p><span class="day-card-icon"></span><p class="day-card-temperatures">–</p></li>
+            <li class="day-card skeleton" aria-hidden="true"><p class="day-card-name">–</p><span class="day-card-icon"></span><p class="day-card-temperatures">–</p></li>
+            <li class="day-card skeleton" aria-hidden="true"><p class="day-card-name">–</p><span class="day-card-icon"></span><p class="day-card-temperatures">–</p></li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="hourly" aria-labelledby="hourly-title">
+        <div class="hourly-header">
+          <h2 class="hourly-title" id="hourly-title">Hourly forecast</h2>
+          <div class="dropdown">
+            <button class="button button-tertiary" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="day-menu" data-day-trigger>
+              <span class="visually-hidden">Selected day:</span>
+              <span data-day-label>–</span>
+              <img class="dropdown-chevron" src="assets/images/icon-dropdown.svg" alt="" width="13" height="8">
+            </button>
+            <div class="menu menu-days" id="day-menu" role="menu" aria-label="Select day" hidden data-day-menu></div>
+          </div>
+        </div>
+        <ul class="hourly-list" role="list" aria-busy="true" data-hourly-list>
+          <li class="hour skeleton" aria-hidden="true"><span class="hour-icon"></span><span class="hour-time">–</span><span class="hour-temperature">–</span></li>
+          <li class="hour skeleton" aria-hidden="true"><span class="hour-icon"></span><span class="hour-time">–</span><span class="hour-temperature">–</span></li>
+          <li class="hour skeleton" aria-hidden="true"><span class="hour-icon"></span><span class="hour-time">–</span><span class="hour-temperature">–</span></li>
+          <li class="hour skeleton" aria-hidden="true"><span class="hour-icon"></span><span class="hour-time">–</span><span class="hour-temperature">–</span></li>
+          <li class="hour skeleton" aria-hidden="true"><span class="hour-icon"></span><span class="hour-time">–</span><span class="hour-temperature">–</span></li>
+          <li class="hour skeleton" aria-hidden="true"><span class="hour-icon"></span><span class="hour-time">–</span><span class="hour-temperature">–</span></li>
+          <li class="hour skeleton" aria-hidden="true"><span class="hour-icon"></span><span class="hour-time">–</span><span class="hour-temperature">–</span></li>
+          <li class="hour skeleton" aria-hidden="true"><span class="hour-icon"></span><span class="hour-time">–</span><span class="hour-temperature">–</span></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

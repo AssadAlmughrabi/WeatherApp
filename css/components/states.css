@@ -1,0 +1,78 @@
+.skeleton {
+  border: 1px solid var(--neutral-600);
+  background-color: var(--neutral-800);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+.hour.skeleton {
+  background-color: var(--neutral-700);
+}
+
+.placeholder,
+.skeleton > * {
+  visibility: hidden;
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.empty-state {
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+  margin-block: 3rem;
+  text-align: center;
+}
+
+.empty-state-icon {
+  width: 2.625rem;
+  height: 2.625rem;
+}
+
+.empty-state-message {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.error-state {
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+  padding-block: 2.5rem 4rem;
+  text-align: center;
+}
+
+.error-state-icon {
+  width: 2.625rem;
+  height: 2.625rem;
+}
+
+.error-state-title {
+  font-family: var(--font-display);
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.error-state-message {
+  max-width: 34.75rem;
+  color: var(--neutral-200);
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 48em) {
+  .error-state {
+    padding-top: 4rem;
+  }
+}

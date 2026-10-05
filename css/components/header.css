@@ -1,0 +1,26 @@
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.site-header-logo {
+  border-radius: var(--radius-sm);
+}
+
+.site-header-logo img {
+  width: auto;
+  height: 1.75rem;
+}
+
+@media (min-width: 48em) {
+  .site-header {
+    padding-top: 3rem;
+  }
+
+  .site-header-logo img {
+    height: 2.5rem;
+  }
+}

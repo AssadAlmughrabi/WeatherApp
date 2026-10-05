@@ -1,0 +1,33 @@
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.metric {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--neutral-600);
+  border-radius: var(--radius-md);
+  background-color: var(--neutral-800);
+}
+
+.metric-label {
+  color: var(--neutral-200);
+  font-size: 1.125rem;
+  line-height: 1.2;
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+@media (min-width: 48em) {
+  .metrics {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}

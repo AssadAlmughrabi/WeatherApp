@@ -1,0 +1,49 @@
+.daily {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.day-card {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  min-height: 10.3125rem;
+  padding: 1rem 0.625rem;
+  border: 1px solid var(--neutral-600);
+  border-radius: var(--radius-md);
+  background-color: var(--neutral-800);
+}
+
+.day-card-name {
+  font-size: 1.125rem;
+  line-height: 1.2;
+}
+
+.day-card-icon {
+  width: 3.75rem;
+  height: 3.75rem;
+}
+
+.day-card-temperatures {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.25rem;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.day-card-low {
+  color: var(--neutral-200);
+}
+
+@media (min-width: 48em) {
+  .daily {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+}
+
+.day-card-name abbr {
+  text-decoration: none;
+}
